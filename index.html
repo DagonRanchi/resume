@@ -415,6 +415,37 @@
 @keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-25%,0,0)}}
 @media (max-width:600px){.ticker__item{margin-right:1rem}}
 
+/* Responsive adjustments for mobile screens */
+@media (max-width: 600px) {
+  /* Reduce padding on timeline and shift the vertical line */
+  .timeline {
+    padding-left: 20px;
+  }
+  .timeline::before {
+    left: 8px;
+  }
+  .timeline-item {
+    padding-left: 12px;
+  }
+  .timeline-item .date {
+    margin-bottom: 3px;
+  }
+
+  /* Allow skill labels to wrap onto multiple lines */
+  .skill-bar .label {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* Make buttons full-width and stack them vertically */
+  .button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -626,7 +657,7 @@
       <div class="section-content">
         <p>Если вы хотите обсудить проект или задать вопросы, свяжитесь со мной по электронной почте или телефону.</p>
         <p>
-          <a href="https://wa.me/77029532003" class="button primary" style="margin-right:10px;" target="_blank">Написать письмо</a>
+          <a href="https://wa.me/77029532003" class="button primary" style="margin-right:10px;" target="_blank">Начать чат&nbsp;в&nbsp;WhatsApp</a>
           <!-- Позвонить button removed as per request -->
         </p>
       </div>
