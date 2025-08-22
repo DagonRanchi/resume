@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf‑8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кобзарь Данил Павлович — Резюме</title>
+  <!-- Google Fonts for modern sans‑serif typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for simple icons (phone, email) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-y6Dk+XyJQ1JHmKWSZAnpbaWGU6JXH+cZsSL5lOK9rf0/xmF8TVS0Iik0yqV74juOqYafhkl7wHyvTURybUpF1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      /* Primary brand colours inspired by shades of blue */
+      --primary-color: #0072bb;
+      --secondary-color: #005fa3;
+      --light-color: #f5f7fa;
+      --text-color: #333;
+      --accent-color: #009fe3;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-color);
+    }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    /* Ensure links inside the header remain visible on the blue background */
+    .header a {
+      color: #ffffff;
+    }
+    /* Header with background image */
+    .header {
+      background-image: url('resume_header_bg.png');
+      background-size: cover;
+      background-position: center;
+      /* Parallax effect: fixed attachment makes the header image scroll slower than
+         the page content, adding depth without relying on JavaScript */
+      background-attachment: fixed;
+      color: #fff;
+      padding: 60px 20px;
+      position: relative;
+    }
+    /* semi‑transparent overlay to improve text contrast */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+    .header > * {
+      position: relative;
+      z-index: 1;
+    }
+    .header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    .nav a {
+      color: #fff;
+      text-decoration: underline;
+      margin-left: 15px;
+      font-weight: 500;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .header p {
+      margin: 5px 0;
+      font-size: 1rem;
+    }
+
+    /* ticker styling */
+    .ticker {
+      background-color: var(--secondary-color);
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      padding: 5px 0;
+    }
+    .ticker div {
+      display: inline-block;
+      padding-left: 0;
+      animation: ticker 20s linear infinite;
+      color: #fff;
+      font-weight: 500;
+    }
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--primary-color);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .section-content {
+      margin-top: 20px;
+    }
+    /* Flexbox for two‑column skill layout */
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .two-columns .column {
+      flex: 1 1 300px;
+    }
+    .skill-group {
+      margin-bottom: 15px;
+    }
+    .skill-group h4 {
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+    .skill-group ul {
+      list-style: none;
+      padding-left: 15px;
+    }
+    .skill-group ul li::before {
+      content: "•";
+      color: var(--primary-color);
+      margin-right: 8px;
+    }
+    .footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
+    }
+
+    /* Remove default bullets and spacing for lists inside sections */
+    .section-content ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .section-content li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Timeline styles */
+    /* Timeline updated for better alignment: slimmer line and centred dots */
+    .timeline {
+      position: relative;
+      margin: 30px 0;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      /* move the line slightly to the left and slim it for better alignment */
+      left: 12px;
+      width: 2px;
+      background: var(--primary-color);
+    }
+    .timeline-item {
+      position: relative;
+      /* Provide spacing and a horizontal separator under each entry */
+      margin-bottom: 20px;
+      padding-left: 20px;
+      border-bottom: 1px solid var(--primary-color);
+      padding-bottom: 15px;
+    }
+    /* remove the final bottom border on the last timeline item */
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+    /* hide the circular marker that previously appeared on the timeline */
+    .timeline-item::before {
+      content: none;
+      display: none;
+    }
+    .timeline-item .date {
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 5px;
+    }
+
+    /* Skill bar styles */
+    .skill-bars {
+      margin-top: 20px;
+    }
+    .skill-bar {
+      margin-bottom: 15px;
+    }
+    .skill-bar .label {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .skill-bar .progress {
+      background: #e5e5e5;
+      border-radius: 5px;
+      height: 10px;
+      overflow: hidden;
+    }
+    /*
+     * Animated bar fills. Each bar uses the CSS variable --target-width to
+     * determine its final width. The animation starts with zero width and
+     * grows to the target, creating a subtle visual cue of progression.
+     */
+    .skill-bar .fill {
+      height: 100%;
+      background: var(--primary-color);
+      width: 0;
+      animation: grow-bar 2s ease forwards;
+    }
+
+    @keyframes grow-bar {
+      from {
+        width: 0;
+      }
+      to {
+        width: var(--target-width);
+      }
+    }
+
+    /* === Enhanced skill bar additions ===
+       The definitions below extend the existing skill bar styles to include
+       numeric scores, a 1..10 scale with tick marks, and optional tooltips.
+       These rules mirror the behaviour of the separate skills template. */
+    .skill-bar {
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .skill-bar .label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .skill-bar .label .score {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+    .skill-bar .progress {
+      background: #e5e5e5;
+      border-radius: 6px;
+      height: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .skill-bar .progress::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      /* repeating linear gradient draws tick marks every 10% */
+      background: repeating-linear-gradient(
+        to right,
+        transparent 0,
+        transparent calc(10% - 1px),
+        rgba(0,0,0,0.08) calc(10% - 1px),
+        rgba(0,0,0,0.08) calc(10% + 1px)
+      );
+    }
+    .skill-bar .fill {
+      height: 100%;
+      background: var(--primary-color);
+      width: 0;
+      animation: grow-bar 1.8s ease forwards;
+    }
+    .skill-bar .scale {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #8a98a8;
+      margin-top: 4px;
+      padding: 0 2px;
+    }
+    .skill-bar .scale li {
+      list-style: none;
+    }
+    /* Tooltip support: reveal the tooltip text when hovering the label */
+    .label[data-tooltip] {
+      --tip-bg: rgba(0,0,0,.88);
+      --tip-pad: 8px 10px;
+      --tip-radius: 6px;
+      position: relative;
+      cursor: help;
+    }
+    .label[data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      transform: translateY(-6px);
+      background: var(--tip-bg);
+      color: #fff;
+      padding: var(--tip-pad);
+      border-radius: var(--tip-radius);
+      opacity: 0;
+      pointer-events: none;
+      white-space: normal;
+      line-height: 1.3;
+      max-width: min(520px, 90vw);
+      box-shadow: 0 4px 14px rgba(0,0,0,.25);
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 10;
+    }
+    .label[data-tooltip]:hover::after {
+      opacity: 1;
+      transform: translateY(-10px);
+    }
+
+    /* Language bar styles share the same classes */
+
+    /* Section backgrounds alternation for better separation */
+    section:nth-of-type(even) {
+      background-color: #ffffff;
+    }
+
+    /* Button styling for call-to-action links */
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 4px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .button.primary {
+      background-color: var(--primary-color);
+    }
+    .button.secondary {
+      background-color: var(--secondary-color);
+    }
+    .button:hover {
+      background-color: var(--accent-color);
+    }
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      .header p {
+        font-size: 0.875rem;
+      }
+      .two-columns .column {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Decorative full-width image used to break up long sections */
+    .decor-img {
+      display: block;
+      width: 100%;
+      margin: 40px auto;
+      border-radius: 8px;
+    }
+  
+
+  /* Removed stray keyframe line that caused CSS parsing issues */
+}
+
+/* === Decorative separator as background === */
+.decor-section {
+  position: relative;
+  height: 120px;              /* компактная высота */
+  margin: 30px 0;
+  background: url("resume_decor.png") center/cover no-repeat;
+  opacity: 0.28;              /* деликатно, чтобы не отвлекать */
+}
+@media (max-width: 600px) {
+  .decor-section { height: 90px; margin: 20px 0; }
+}
+
+  
+/* === Seamless ticker (robust) === */
+.ticker{background-color:var(--secondary-color);overflow:hidden;padding:5px 0}
+.ticker__track{display:flex;align-items:center;list-style:none;margin:0;padding:0;white-space:nowrap;width:max-content;animation:marquee 30s linear infinite;will-change:transform}
+.ticker__item{flex:0 0 auto;white-space:nowrap;margin-right:2rem;color:#fff;font-weight:500}
+@keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-25%,0,0)}}
+@media (max-width:600px){.ticker__item{margin-right:1rem}}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="nav">
+        <!-- Link to the portfolio page for easy navigation -->
+        <a href="portfolio.html">Портфолио</a>
+      </div>
+      <h1>Кобзарь Данил Павлович</h1>
+      <p>Мужчина, 24.04.2006 (19 лет)</p>
+      <p>Восточно‑Казахстанская область, Глубоковский район, п. Белоусовка</p>
+      <p><i class="fa fa-phone"></i> <span>+7 (705) 368‑09‑42</span> • <span>+7 (702) 953‑20‑03 (WhatsApp)</span></p>
+      <p><i class="fa fa-envelope"></i> <span><a href="mailto:kobzardanil567@gmail.com">kobzardanil567@gmail.com</a></span></p>
+    </div>
+  </header>
+  <!-- continuous ticker summarising areas of expertise -->
+  <div class="ticker">
+  <ul class="ticker__track" role="marquee" aria-label="Ключевые навыки">
+    <li class="ticker__item">Lua &amp; Python developer • Game design enthusiast • WordPress &amp; server administration • ASR &amp; AI specialist • Telegram bots &amp; neural networks • Graphics &amp; databases •</li>
+    <li class="ticker__item" aria-hidden="true">Lua &amp; Python developer • Game design enthusiast • WordPress &amp; server administration • ASR &amp; AI specialist • Telegram bots &amp; neural networks • Graphics &amp; databases •</li>
+    <li class="ticker__item" aria-hidden="true">Lua &amp; Python developer • Game design enthusiast • WordPress &amp; server administration • ASR &amp; AI specialist • Telegram bots &amp; neural networks • Graphics &amp; databases •</li>
+    <li class="ticker__item" aria-hidden="true">Lua &amp; Python developer • Game design enthusiast • WordPress &amp; server administration • ASR &amp; AI specialist • Telegram bots &amp; neural networks • Graphics &amp; databases •</li>
+  </ul>
+</div>
+</div>
+  <main>
+    <section>
+      <h2 class="section-title">Цель</h2>
+      <div class="section-content">
+        <p>Стажировка или младшая должность в области разработки ПО или геймдева.</p>
+      </div>
+    </section>
+    <section>
+      <h2 class="section-title">Образование и опыт</h2>
+      <div class="section-content">
+        <!-- Timeline combining education and professional experience -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="date">2023 — настоящее</div>
+            <p><strong>Усть‑Каменогорский колледж экономики и техники</strong><br/>Специальность: Разработка программного обеспечения, очная форма, 3 курс.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2024</div>
+            <p><strong>Лаборант компьютерного класса</strong> (по месту обучения). Обслуживание компьютерной техники и локальных сетей.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2024</div>
+            <p>Поддержка и доработка <strong>WordPress‑сайтов</strong>, внедрение новых функций и исправление ошибок.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2024</div>
+            <p>Разработка <strong>Telegram‑ботов</strong> на Python и Lua для автоматизации задач и взаимодействия с пользователями.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2024</div>
+            <p>Настройка локальных и публичных <strong>серверов и баз данных</strong>, работа с государственными НОБД.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2025</div>
+            <p>Разработка серверов на Python с помощью <strong>FastAPI</strong>, создание баз данных на <strong>PostgreSQL</strong>, разработка сайтов на заказ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="section-title">Навыки</h2>
+      <div class="section-content">
+        <!-- Enhanced skill bars with a 1‑10 scale, numeric scores and tooltips.
+             The markup below is adapted from resume_skills_scaled.html.
+             Each .skill-bar includes an optional data-tooltip attribute that displays
+             extra information when hovering the skill name. -->
+        <div class="skill-bars">
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Lua — разработка модификаций для игр, разработка приложений и баз данных.">Lua <span class="score">9/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="9" aria-label="Lua">
+              <div class="fill" style="--target-width:90%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Python — работа с нейросетями, разработка скриптов для работы с любыми типами баз данных, алгоритмизация рутинных действий, написание серверов.">Python <span class="score">7/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="7" aria-label="Python">
+              <div class="fill" style="--target-width:70%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="JavaScript — разработка веб‑сайтов, панорама для пользовательских карт в Dota 2.">JavaScript <span class="score">5/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="5" aria-label="JavaScript">
+              <div class="fill" style="--target-width:50%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Dart (Flutter) — разрабатываю кроссплатформенные мобильные приложения.">Dart (Flutter) <span class="score">4/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" aria-label="Dart (Flutter)">
+              <div class="fill" style="--target-width:40%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="GDScript (Godot) — написание логики и поведения игр на движке Godot.">GDScript (Godot) <span class="score">6/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="6" aria-label="GDScript (Godot)">
+              <div class="fill" style="--target-width:60%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="ASR и голосовые интерфейсы — автоматическое распознавание речи и создание голосовых интерфейсов для взаимодействия с пользователем.">ASR и голосовые интерфейсы <span class="score">4/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" aria-label="ASR и голосовые интерфейсы">
+              <div class="fill" style="--target-width:40%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Нейросети — строю и обучаю нейронные сети, работаю с моделями глубокого обучения.">Нейросети <span class="score">9/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="9" aria-label="Нейросети">
+              <div class="fill" style="--target-width:90%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="WordPress &amp; веб‑сайты — создаю, кастомизирую и поддерживаю сайты на CMS WordPress.">WordPress &amp; веб‑сайты <span class="score">5/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="5" aria-label="WordPress &amp; веб‑сайты">
+              <div class="fill" style="--target-width:50%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Серверы и базы данных — настраиваю, администрирую, оптимизирую и разрабатываю серверы и базы данных.">Серверы и базы данных <span class="score">8/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="8" aria-label="Серверы и базы данных">
+              <div class="fill" style="--target-width:80%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Графика (SAI, Figma) — создаю иллюстрации, макеты и пользовательские интерфейсы в графических редакторах.">Графика (SAI, Figma) <span class="score">6/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="6" aria-label="Графика (SAI, Figma)">
+              <div class="fill" style="--target-width:60%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Офисные инструменты — уверенно владею текстовыми процессорами, таблицами и презентациями.">Офисные инструменты <span class="score">9/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="9" aria-label="Офисные инструменты">
+              <div class="fill" style="--target-width:90%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label" data-tooltip="Геймдизайн — разрабатываю концепции, механики и сценарии для интерактивных развлечений.">Геймдизайн <span class="score">8/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="8" aria-label="Геймдизайн">
+              <div class="fill" style="--target-width:80%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Decorative separator image emphasising creativity and technology -->
+    <section class="decor-section" aria-hidden="true"></section>
+    <section>
+      <h2 class="section-title">Языки</h2>
+      <div class="section-content">
+        <!-- Language proficiency bars using the same enhanced skill bar styles.
+             Scores here loosely correspond to CEFR levels (e.g. A1≈3/10, A2≈4/10). -->
+        <div class="skill-bars">
+          <div class="skill-bar">
+            <div class="label">Русский (родной) <span class="score">10/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="10" aria-label="Русский">
+              <div class="fill" style="--target-width:100%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label">Казахский (A1) <span class="score">3/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" aria-label="Казахский">
+              <div class="fill" style="--target-width:30%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+          <div class="skill-bar">
+            <div class="label">Английский (A2) <span class="score">4/10</span></div>
+            <div class="progress" role="meter" aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" aria-label="Английский">
+              <div class="fill" style="--target-width:40%"></div>
+            </div>
+            <ol class="scale" aria-hidden="true"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="section-title">Личные качества</h2>
+      <div class="section-content">
+        <ul>
+          <li>Стрессоустойчивость</li>
+          <li>Командная работа</li>
+          <li>Быстрая адаптация</li>
+          <li>Соблюдение сроков</li>
+          <li>Инициативность и обучаемость</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact section with call‑to‑action -->
+    <section>
+      <h2 class="section-title">Контакты</h2>
+      <div class="section-content">
+        <p>Если вы хотите обсудить проект или задать вопросы, свяжитесь со мной по электронной почте или телефону.</p>
+        <p>
+          <a href="https://wa.me/77029532003" class="button primary" style="margin-right:10px;" target="_blank">Написать письмо</a>
+          <!-- Позвонить button removed as per request -->
+        </p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2025 Кобзарь Данил Павлович | Сайт разработан с использованием HTML и CSS</p>
+  </footer>
+</body>
+</html>

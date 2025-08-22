@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf‑8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Портфолио — Кобзарь Данил Павлович</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for project icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-y6Dk+XyJQ1JHmKWSZAnpbaWGU6JXH+cZsSL5lOK9rf0/xmF8TVS0Iik0yqV74juOqYafhkl7wHyvTURybUpF1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --primary-color: #0072bb;
+      --secondary-color: #005fa3;
+      --light-color: #f5f7fa;
+      --text-color: #333;
+      --card-bg: #fff;
+      --card-border: #e0e0e0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-color);
+    }
+    .header {
+      background-image: url('portfolio_header_bg.png');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 60px 20px;
+      position: relative;
+      /* Parallax effect similar to the resume page */
+      background-attachment: fixed;
+    }
+    /* dark overlay for header to improve contrast */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 0;
+    }
+    .header > * {
+      position: relative;
+      z-index: 1;
+    }
+    .header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    .nav a {
+      color: #fff;
+      text-decoration: underline;
+      margin-left: 15px;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .header .subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-top: 10px;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    /* Grid layout for project cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+    .project-card p {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    .project-card .button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: var(--primary-color);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+    .project-card .button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Generic button styles reused across the page */
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 4px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .button.primary {
+      background-color: var(--primary-color);
+    }
+    .button.secondary {
+      background-color: var(--secondary-color);
+    }
+    .button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Filter buttons for project categories */
+    .filters {
+      margin-bottom: 20px;
+    }
+    .filter-button {
+      background: #e0eff8;
+      border: none;
+      color: var(--primary-color);
+      padding: 8px 16px;
+      margin-right: 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .filter-button.active,
+    .filter-button:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    /* image within project cards */
+    .project-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .project-card .content {
+      padding: 20px;
+    }
+    /* overlay appears on hover to reveal more details */
+    .project-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover .overlay {
+      opacity: 1;
+    }
+    .overlay a.button {
+      margin-top: 10px;
+    }
+    /* ticker bar similar to resume page */
+    .ticker {
+      background-color: var(--secondary-color);
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      padding: 5px 0;
+    }
+    .ticker div {
+      display: inline-block;
+      animation: ticker 20s linear infinite;
+    }
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    /* Simple footer */
+    .footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="nav">
+        <!-- Link back to the resume page for easy navigation -->
+        <a href="resume.html">Резюме</a>
+      </div>
+      <h1>Портфолио</h1>
+      <p class="subtitle">Проекты и работы: от кастомных модов до нейросетей</p>
+    </div>
+  </header>
+  <!-- ticker with rolling descriptions of project domains -->
+  <div class="ticker"><div>Кастомные моды для игр • Web‑разработка и WordPress • Telegram‑боты и автоматизация • Серверы, базы данных и НОБД • ASR и нейросети •</div></div>
+  <main>
+    <section>
+      <h2 class="section-title">Проекты</h2>
+      <!-- Category filter buttons for interactive filtering -->
+      <div class="filters">
+        <button class="filter-button active" data-filter="all">Все</button>
+        <button class="filter-button" data-filter="game">Игры</button>
+        <button class="filter-button" data-filter="website">Web/WordPress</button>
+        <button class="filter-button" data-filter="bot">Боты</button>
+        <button class="filter-button" data-filter="server">Серверы</button>
+      </div>
+      <!-- Grid of project cards. To add a new project, copy one of the blocks below and modify its contents.
+           Assign a class corresponding to one of the filter categories (game, website, bot, server) -->
+      <div class="projects-grid">
+        <div class="project-card game">
+          <img src="game_dev.png" alt="Кастомные моды для Dota 2" />
+          <div class="content">
+            <h3>Кастомные моды для Dota 2</h3>
+            <p>Собственные игровые режимы, где продумана логика и баланс механик.</p>
+          </div>
+          <div class="overlay">
+            <p>Разработка уникальных игровых механик на Lua и балансировка геймплея. Проект демонстрирует глубокое понимание логики игровых систем.</p>
+            <a href="#" class="button primary">Подробнее</a>
+          </div>
+        </div>
+        <div class="project-card website">
+          <img src="website_dev.png" alt="WordPress‑сайты" />
+          <div class="content">
+            <h3>WordPress‑сайты</h3>
+            <p>Поддержка и доработка сайтов: оптимизация, внедрение новых функций и исправление ошибок.</p>
+          </div>
+          <div class="overlay">
+            <p>Оптимизация производительности, разработка тем и плагинов, интеграция внешних сервисов и устранение ошибок для сайтов на WordPress.</p>
+            <a href="#" class="button primary">Подробнее</a>
+          </div>
+        </div>
+        <div class="project-card bot">
+          <img src="chat_bot.png" alt="Telegram‑боты" />
+          <div class="content">
+            <h3>Telegram‑боты</h3>
+            <p>Проекты на Python и Lua для автоматизации задач и взаимодействия с пользователями.</p>
+          </div>
+          <div class="overlay">
+            <p>Создание чат‑ботов с использованием Python и Lua: автоматизация процессов, интеграция с API и динамическое взаимодействие с пользователями.</p>
+            <a href="#" class="button primary">Подробнее</a>
+          </div>
+        </div>
+        <div class="project-card server">
+          <img src="server_db.png" alt="Серверы и базы данных" />
+          <div class="content">
+            <h3>Серверы и базы данных</h3>
+            <p>Настройка локальных и публичных серверов, работа с государственными базами данных (НОБД).</p>
+          </div>
+          <div class="overlay">
+            <p>Развертывание и поддержка серверов, администрирование баз данных, настройка безопасности и работа с НОБД.</p>
+            <a href="#" class="button primary">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action inviting viewers to get in touch -->
+    <section>
+      <h2 class="section-title">Связаться</h2>
+      <div class="section-content">
+        <p>Если вам понравились мои проекты и вы хотели бы сотрудничать или узнать подробнее, свяжитесь со мной.</p>
+        <a href="mailto:kobzardanil567@gmail.com" class="button primary">Написать письмо</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2025 Кобзарь Данил Павлович | Портфолио</p>
+  </footer>
+
+  <!-- Simple script for filtering projects by category. When a filter button is clicked,
+       it toggles the active state and shows only the matching project cards. -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.filter-button');
+      const cards = document.querySelectorAll('.project-card');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          // set active class on clicked button
+          buttons.forEach(function (b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          const category = this.getAttribute('data-filter');
+          // show or hide cards based on category
+          cards.forEach(function (card) {
+            if (category === 'all' || card.classList.contains(category)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
