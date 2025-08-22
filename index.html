@@ -118,7 +118,10 @@
       }
     }
     section {
-      padding: 40px 20px;
+      /* Provide comfortable spacing between sections and limit maximum width for better readability */
+      padding: 32px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .section-title {
       font-size: 1.6rem;
@@ -381,6 +384,11 @@
       .two-columns .column {
         flex: 1 1 100%;
       }
+      /* Reduce section padding on small screens and allow the content to span full width */
+      section {
+        padding: 30px 15px;
+        max-width: none;
+      }
     }
 
     /* Decorative full-width image used to break up long sections */
@@ -397,14 +405,17 @@
 
 /* === Decorative separator as background === */
 .decor-section {
-  position: relative;
-  height: 120px;              /* компактная высота */
-  margin: 30px 0;
-  background: url("resume_decor.png") center/cover no-repeat;
-  opacity: 0.28;              /* деликатно, чтобы не отвлекать */
+  /* The decorative section is intentionally hidden because the corresponding
+     image is not available. Displaying it without a valid background
+     creates a large blank space. If you have a decorative image, you can
+     re-enable this section by restoring its size, margin and background. */
+  display: none;
 }
 @media (max-width: 600px) {
-  .decor-section { height: 90px; margin: 20px 0; }
+  /* Keep the decorative section hidden on small screens */
+  .decor-section {
+    display: none;
+  }
 }
 
   
@@ -443,6 +454,11 @@
     width: 100%;
     text-align: center;
     margin: 10px 0;
+  }
+
+  /* Hide the decorative separator on very small screens to avoid large empty zones */
+  .decor-section {
+    display: none;
   }
 }
 
@@ -606,8 +622,6 @@
         </div>
       </div>
     </section>
-    <!-- Decorative separator image emphasising creativity and technology -->
-    <section class="decor-section" aria-hidden="true"></section>
     <section>
       <h2 class="section-title">Языки</h2>
       <div class="section-content">

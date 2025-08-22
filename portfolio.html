@@ -76,6 +76,9 @@
     }
     section {
       padding: 40px 20px;
+      /* Constrain the content width on larger displays for a more focused layout */
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .section-title {
       font-size: 1.8rem;
@@ -147,13 +150,15 @@
     /* Filter buttons for project categories */
     .filters {
       margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .filter-button {
       background: #e0eff8;
       border: none;
       color: var(--primary-color);
       padding: 8px 16px;
-      margin-right: 10px;
       border-radius: 4px;
       font-size: 0.9rem;
       cursor: pointer;
@@ -230,6 +235,23 @@
       .header h1 {
         font-size: 2rem;
       }
+      /* Reduce header padding for compactness on mobile */
+      .header {
+        padding: 40px 15px;
+        background-attachment: scroll; /* disable fixed background on mobile */
+      }
+
+      /* Make project cards stack in a single column for narrow screens */
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Reduce section padding and allow full width on small screens */
+      section {
+        padding: 30px 15px;
+        max-width: none;
+        margin: 0;
+      }
     }
   </style>
 </head>
@@ -238,7 +260,7 @@
     <div class="container">
       <div class="nav">
         <!-- Link back to the resume page for easy navigation -->
-        <a href="resume.html">Резюме</a>
+        <a href="index.html">Резюме</a>
       </div>
       <h1>Портфолио</h1>
       <p class="subtitle">Проекты и работы: от кастомных модов до нейросетей</p>
@@ -247,7 +269,8 @@
   <!-- ticker with rolling descriptions of project domains -->
   <div class="ticker"><div>Кастомные моды для игр • Web‑разработка и WordPress • Telegram‑боты и автоматизация • Серверы, базы данных и НОБД • ASR и нейросети •</div></div>
   <main>
-    <section>
+    <!-- Main projects section. Added id for toggling visibility -->
+    <section id="projects-section">
       <h2 class="section-title">Проекты</h2>
       <!-- Category filter buttons for interactive filtering -->
       <div class="filters">
@@ -268,18 +291,18 @@
           </div>
           <div class="overlay">
             <p>Разработка уникальных игровых механик на Lua и балансировка геймплея. Проект демонстрирует глубокое понимание логики игровых систем.</p>
-            <a href="#" class="button primary">Подробнее</a>
+            <a href="#" id="dota2-details-btn" class="button primary">Подробнее</a>
           </div>
         </div>
         <div class="project-card website">
-          <img src="website_dev.png" alt="WordPress‑сайты" />
+          <img src="website_dev.png" alt="сайты" />
           <div class="content">
-            <h3>WordPress‑сайты</h3>
+            <h3>сайты</h3>
             <p>Поддержка и доработка сайтов: оптимизация, внедрение новых функций и исправление ошибок.</p>
           </div>
           <div class="overlay">
-            <p>Оптимизация производительности, разработка тем и плагинов, интеграция внешних сервисов и устранение ошибок для сайтов на WordPress.</p>
-            <a href="#" class="button primary">Подробнее</a>
+            <p>Оптимизация производительности, разработка тем и плагинов, интеграция внешних сервисов и устранение ошибок для сайтов на WordPress. Могу обеспечивать поддержку готовых проектов, а также разрабатывать собственные сайты на HTML, CSS, JavaScript и других веб-технологиях.</p>
+            <a href="#" id="wordpress-details-btn" class="button primary">Подробнее</a>
           </div>
         </div>
         <div class="project-card bot">
@@ -301,39 +324,115 @@
           </div>
           <div class="overlay">
             <p>Развертывание и поддержка серверов, администрирование баз данных, настройка безопасности и работа с НОБД.</p>
-            <a href="#" class="button primary">Подробнее</a>
+            <a href="#" id="server-details-btn" class="button primary">Подробнее</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Call to action inviting viewers to get in touch -->
-    <section>
-      <h2 class="section-title">Связаться</h2>
-      <div class="section-content">
-        <p>Если вам понравились мои проекты и вы хотели бы сотрудничать или узнать подробнее, свяжитесь со мной.</p>
-        <a href="mailto:kobzardanil567@gmail.com" class="button primary">Написать письмо</a>
+    <!-- Detailed sections for individual projects -->
+
+    <!-- Dota 2 custom mods detail section -->
+    <section id="dota2-detail" style="display:none; padding:40px 20px;">
+      <h2 class="section-title">Кастомные моды для Dota 2</h2>
+      <p>Кастомные режимы, созданные мной, позволяют взглянуть на Dota 2 под новым углом. Это независимые проекты с уникальными механиками и сценариями, в которых я работал над логикой, балансом и реализацией игровых идей.</p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="cry_of_darkness.jpg" alt="Cry of Darkness" />
+          <div class="content">
+            <h3>Cry of Darkness</h3>
+            <p>Лютая битва во тьме — исследуйте новые механики и противников.</p>
+          </div>
+          <div class="overlay">
+            <p>«Cry of Darkness» — кастомный режим с погружением в мрачный мир, где важны тактика и командная игра.</p>
+            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3257353702" target="_blank" class="button primary">Открыть в Steam</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="roshan_defense.jpg" alt="Roshan Defense Reborn" />
+          <div class="content">
+            <h3>Roshan Defense Reborn</h3>
+            <p>Обороняйтесь от толп, улучшайте героев и сражайтесь с Рошаном.</p>
+          </div>
+          <div class="overlay">
+            <p>«Roshan Defense Reborn» — кооперативная защита от орды врагов с прокачкой героев и осадой Рошана.</p>
+            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2468947502" target="_blank" class="button primary">Открыть в Steam</a>
+          </div>
+        </div>
       </div>
+      <a href="#" id="back-dota" class="button secondary" style="margin-top:20px; display:inline-block;">Назад</a>
     </section>
+
+    <!-- WordPress sites detail section -->
+    <section id="wordpress-detail" style="display:none; padding:40px 20px;">
+      <h2 class="section-title">Сайты</h2>
+      <p>Ниже представлены сайты, разработанные мной: как проекты на WordPress с созданием и настройкой тем, плагинов и интеграцией внешних сервисов, так и сайты, написанные с нуля на HTML, CSS, JavaScript и других веб-технологиях. Все проекты находятся в общем доступе и могут служить примером моей работы.</p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="wordpress_cover.png" alt="CEF KAFU website" />
+          <div class="content">
+            <h3>CEF KAFU</h3>
+            <p>Колледжский информационный портал.</p>
+          </div>
+          <div class="overlay">
+            <p>Сайт колледжа, которым я занимаюсь: обновление контента, оптимизация производительности и интеграция новых сервисов.</p>
+            <a href="https://cef.kafu.kz" target="_blank" class="button primary">Перейти на сайт</a>
+          </div>
+        </div>
+      </div>
+      <a href="#" id="back-wordpress" class="button secondary" style="margin-top:20px; display:inline-block;">Назад</a>
+    </section>
+
+    <!-- Servers and databases summary section -->
+    <section id="server-detail" style="display:none; padding:40px 20px;">
+      <h2 class="section-title">Серверы и базы данных</h2>
+      <p>Ниже представлены проекты, в которых мной были разработаны и подключены серверы и базы данных. Все решения написаны и настроены лично, с учётом архитектуры и оптимизации под конкретные задачи. В каждом проекте реализован удобный интерфейс с встроенными админ-панелями в UI, что обеспечивает полный контроль и управление системой без необходимости обращаться к сторонним инструментам.</p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="server_screenshot1.png" alt="Превью сайта под NDA" />
+          <div class="content">
+            <h3>Сайт под NDA</h3>
+            <p>Веб‑приложение с собственной системой управления.</p>
+          </div>
+          <div class="overlay">
+            <p>Проект находится под NDA. Существует закрытый административный интерфейс для управления пользователями и контентом, но доступ к нему ограничен.</p>
+            <a href="#" id="server-more-btn" class="button primary">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      <a href="#" id="back-server" class="button secondary" style="margin-top:20px; display:inline-block;">Назад</a>
+    </section>
+
+    <!-- Server screenshots detail section (single topic) -->
+    <section id="server-screenshots" style="display:none; padding:40px 20px;">
+      <h2 class="section-title">Скриншоты сайта под NDA</h2>
+      <p>Ниже приведены отдельные снимки экрана сайта. Из‑за условий NDA детали ограничены.</p>
+      <div class="screenshot-gallery">
+        <img src="server_screenshot1.png" alt="Скриншот 1" style="width:100%; max-width:600px; margin-bottom:20px; border-radius:8px;" />
+        <img src="server_screenshot2.png" alt="Скриншот 2" style="width:100%; max-width:600px; border-radius:8px;" />
+      </div>
+      <a href="#" id="back-server-detail" class="button secondary" style="margin-top:20px; display:inline-block;">Назад</a>
+    </section>
+
   </main>
   <footer class="footer">
     <p>&copy; 2025 Кобзарь Данил Павлович | Портфолио</p>
   </footer>
 
-  <!-- Simple script for filtering projects by category. When a filter button is clicked,
-       it toggles the active state and shows only the matching project cards. -->
+  <!-- Script for filtering and navigating between project sections -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const buttons = document.querySelectorAll('.filter-button');
-      const cards = document.querySelectorAll('.project-card');
-      buttons.forEach(function (btn) {
+      // --- Project filtering logic ---
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const projectCards = document.querySelectorAll('#projects-section .project-card');
+      filterButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          // set active class on clicked button
-          buttons.forEach(function (b) { b.classList.remove('active'); });
+          // Highlight the active filter
+          filterButtons.forEach(function (b) { b.classList.remove('active'); });
           this.classList.add('active');
           const category = this.getAttribute('data-filter');
-          // show or hide cards based on category
-          cards.forEach(function (card) {
+          // Show or hide cards based on category
+          projectCards.forEach(function (card) {
             if (category === 'all' || card.classList.contains(category)) {
               card.style.display = 'block';
             } else {
@@ -342,6 +441,93 @@
           });
         });
       });
+
+      // --- Detail section navigation logic ---
+      const projectsSection = document.getElementById('projects-section');
+      const detailSections = {
+        dota: document.getElementById('dota2-detail'),
+        wordpress: document.getElementById('wordpress-detail'),
+        server: document.getElementById('server-detail'),
+      };
+      const serverScreenshots = document.getElementById('server-screenshots');
+
+      // Buttons to open detail sections
+      const openButtons = {
+        dota: document.getElementById('dota2-details-btn'),
+        wordpress: document.getElementById('wordpress-details-btn'),
+        server: document.getElementById('server-details-btn'),
+      };
+      // Back buttons for each detail section
+      const backButtons = {
+        dota: document.getElementById('back-dota'),
+        wordpress: document.getElementById('back-wordpress'),
+        server: document.getElementById('back-server'),
+      };
+
+      // Buttons for server sub-level navigation
+      const serverMoreBtn = document.getElementById('server-more-btn');
+      const backServerDetailBtn = document.getElementById('back-server-detail');
+
+      function showProjects() {
+        projectsSection.style.display = 'block';
+        Object.values(detailSections).forEach(function (sec) {
+          if (sec) sec.style.display = 'none';
+        });
+        if (serverScreenshots) {
+          serverScreenshots.style.display = 'none';
+        }
+      }
+
+      function showDetailSection(key) {
+        projectsSection.style.display = 'none';
+        if (serverScreenshots) serverScreenshots.style.display = 'none';
+        Object.keys(detailSections).forEach(function (k) {
+          const section = detailSections[k];
+          if (section) {
+            section.style.display = (k === key ? 'block' : 'none');
+          }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      Object.keys(openButtons).forEach(function (key) {
+        const btn = openButtons[key];
+        if (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            showDetailSection(key);
+          });
+        }
+      });
+
+      Object.keys(backButtons).forEach(function (key) {
+        const btn = backButtons[key];
+        if (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            showProjects();
+          });
+        }
+      });
+
+      if (serverMoreBtn) {
+        serverMoreBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (detailSections.server) detailSections.server.style.display = 'none';
+          if (serverScreenshots) serverScreenshots.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+      if (backServerDetailBtn) {
+        backServerDetailBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (serverScreenshots) serverScreenshots.style.display = 'none';
+          if (detailSections.server) {
+            detailSections.server.style.display = 'block';
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
   </script>
 </body>
