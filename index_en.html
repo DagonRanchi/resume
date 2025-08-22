@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Prevent scaling on mobile and restrict zooming to fix layout shifting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Danil Pavlovich Kobzar — Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link
@@ -403,6 +404,15 @@
 
   .decor-section {
     display: none;
+  }
+}
+
+/* Additional adjustments specifically for small screens */
+@media (max-width: 600px) {
+  /* Reduce padding and disable fixed background attachment on the header to prevent zoom and layout issues on mobile */
+  .header {
+    padding: 40px 15px;
+    background-attachment: scroll;
   }
 }
 
